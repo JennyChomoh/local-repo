@@ -1,6 +1,6 @@
 AWSTemplateFormationVervion: '2010-09-09'
 Description: >
-  "This template will deploy an ec2 instance in US-East1 region"
+ "This template will deploy an ec2 instance in US-East1 region"
 Resources:
  MyEC2Instance: 
     Type: AWS::EC2::Instance

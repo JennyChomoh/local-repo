@@ -1,5 +1,4 @@
 
-AWSTemplateFormationVersion: '2010-09-09'
 Description: >
   This template will deploy an ec2 instance in US-EAST1 Region
 Resources:
@@ -8,3 +7,6 @@ Resources:
     Properties: 
       ImageId: "ami-051f7e7f6c2f40dc1"
       InstanceType: "t2.micro"
+      Tags: 
+        Key: "Name"
+        Value: "Jenny-ec2"
