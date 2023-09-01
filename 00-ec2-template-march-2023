@@ -1,0 +1,9 @@
+AWSTemplateFormationVervion: '2010-09-09'
+Description: >
+  "This template will deploy an ec2 instance in US-East1 region"
+Resources:
+ MyEC2Instance: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-051f7e7f6c2f40dc1"
+      InstanceType: "t2.micro" 
