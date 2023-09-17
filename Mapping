@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+ "This template will deploy an ec2 instance in US-East1 region"
+
+Parameters: 
+  
+  InstanceType:
+    Description: provide the instance type of our ec2
+    Type: String
+    Default: t3.micro
+
+Mappings: 
+  RegionMap:
+    us-east-1: 
+      "HVM64": "ami-0f844a9675b22ea32"
+    us-west-1:
+      "HVM64": "ami-073e64e4c237c08ad"
+    eu-west-1:
+      "HVM64": "ami-0648880541a3156f7"
+    ap-southeast-1:
+      "HVM64": "ami-0b825ad86ddcfb907"
+    ap-northeast-1:
+      "HVM62": "ami-0a2e10c1b874595a1"
+   
+Resources:
+ MyEC2Instance: 
+    Type: AWS::EC2::Instance 
+    Properties: 
+      ImageId: !FindInMap [RegionMap, !Ref 'AWS::Region', "HVM64"]   
+      InstanceType: !Ref InstanceType
+

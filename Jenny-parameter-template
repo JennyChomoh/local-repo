@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+ "This template will deploy an ec2 instance in US-East1 region"
+
+Parameters: 
+  ImageId:
+    Description: Provides an image id
+    Type: String
+  InstanceType:
+    Description: provide the instance type of our ec2
+    Type: String
+    Default: t3.micro
+   
+Resources:
+ MyEC2Instance: 
+    Type: AWS::EC2::Instance 
+    Properties: 
+      ImageId: !Ref ImageId   
+      InstanceType: !Ref InstanceType  
+   
