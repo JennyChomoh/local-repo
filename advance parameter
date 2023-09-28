@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+ "This template will deploy an ec2 instance in US-East1 region"
+
+Parameters: 
+  
+  InstanceType:
+    Description: provide the instance type of our ec2
+    Type: String 
+  ImageId: # go to parameter store and look foe type image ID
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+   
+Resources:
+ MyEC2Instance: 
+    Type: AWS::EC2::Instance 
+    Properties: 
+      ImageId: !Ref ImageId    
+      InstanceType: !Ref InstanceType
+
+Outputs:
+  EC2Instance:
+    Description: Whatever description float your boat 
+    Value: !Ref MyEC2Instance
+    

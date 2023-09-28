@@ -9,7 +9,6 @@ Parameters:
   InstanceType:
     Description: provide the instance type of our ec2
     Type: String
-    Default: t3.micro
    
 Resources:
  MyEC2Instance: 

@@ -13,7 +13,7 @@ Resources:
       CidrBlock: 10.0.0.0/16
       Tags:
         - Key: Name
-          Value: SampleNetwork-VPC
+          Value: SampleNetworkCrossStack-VPC
   PublicSubnet:  
     Type: 'AWS::EC2::Subnet'
     Properties:
@@ -21,7 +21,7 @@ Resources:
       CidrBlock: 10.0.0.0/24
       Tags:
         - Key: Name
-          Value: Project-pub-sub
+          Value: SampleNetworkCrossStack-pub-sub
   InternetGateway:
     Type: 'AWS::EC2::InternetGateway'
   VPCGatewayAttachment:
@@ -64,8 +64,13 @@ Resources:
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: Name
-          Value: Projec-SG
+          Value: SampleNetworkCrossStack-SG 
 
+  MyEIP: # we need to allocate and ELastic Ip address using resource
+    Type: AWS::EC2::EIP 
+    Properties:
+      InstanceId: !Ref Myec2instance
+      
 Outputs:
   VPCId:
     Description: VPC ID

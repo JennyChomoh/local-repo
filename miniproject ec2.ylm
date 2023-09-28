@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+ "This template will be used to launch a webserver  in us-west-2.
+Metadata: 
+  Authors:
+    Description: Chomoh Jenny # The writter of the template
+
+Parameters: 
+  InstanceType:
+    Description: Ec2 instance type
+    Type: String 
+    Default: t2.micro
+  KeyName: 
+    Description: Name of an existing keypair 
+    Type: AWS::EC2::KeyPair::KeyName
+
+Mappings: 
+  RegionMap:
+    us-east-1: 
+      "HVM64": "ami-0f844a9675b22ea32"
+    us-west-1:
+      "HVM64": "ami-073e64e4c237c08ad"
+    us-west-2:
+      "HVM64": "ami-0ccea833bf267252a"
+    eu-west-1:
+      "HVM64": "ami-0648880541a3156f7"
+    ap-southeast-1:
+      "HVM64": "ami-0b825ad86ddcfb907"
+    ap-northeast-1:
+      "HVM62": "ami-0a2e10c1b874595a1"
+   
+Resources:
+ MyEC2Instance: 
+    Type: AWS::EC2::Instance 
+    Properties: 
+      ImageId: !FindInMap [RegionMap, !Ref AWS::Region, "HVM64"] 
+      InstanceType: !Ref InstanceType   
+      KeyName: !Ref KeyName
+      SecurityGroupIds: 
+        - !ImportValue 
+             SampleNetworkCrossSack-SecurityGroupID
+      SubnetId:
+        !ImportValue 'SampleNetworkCrossSack-SubnetID'
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install httpd -y
+          echo '<html><body><h1>Welcome to the Image Server by CHOMOH JENNY</h1></body></html>' > /var/www/html/index.html
+          systemctl start httpd
+          systemctl enable httpd
+
+      Tags:
+        - Key: Name
+          Value: EC2-Cross-Stack-Reference
+
+ MyEIP: # we need to allocate and ELastic Ip address using resource
+    Type: AWS::EC2::EIP 
+    Properties:
+      InstanceId: !Ref MyEC2Instance
+
+
+Outputs:
+  InstanceId:
+    Description: Instance id of the newly created ec2
+    Value: !GetAtt MyEC2Instance.PublicIp
+
+  PrivateDNSName: 
+    Description: display the private DNS name of the EC2 MyEC2Istance  
+    Value: !GetAtt MyEC2Instance.PrivateDnsName
+    Export: 
+      Name: !Sub '${AWS::StackName}-PrivateIp'
+
+  PublicDNSName: 
+    Description: display the public DNS name of the EC2 MyEC2Istance  
+    Value: !GetAtt MyEC2Instance.PublicDnsName
+    Export: 
+      Name: !Sub '${AWS::StackName}-PublicIp' 
+      
+
+
+
+
