@@ -46,7 +46,7 @@ Resources:
           #!/bin/bash
           yum update -y
           yum install httpd -y
-          echo '<html><body><h1>Welcome to the Image Server by CHOMOH JENNY</h1></body></html>' > /var/www/html/index.html
+          echo '<html><body><h1>Welcome to the Image Server by CHOMOH JENNYE. this is an personal effort </h1></body></html>' > /var/www/html/index.html
           systemctl start httpd
           systemctl enable httpd
 

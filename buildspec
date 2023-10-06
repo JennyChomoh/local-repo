@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install: # installing the app necesary software
+    runtime-versions:
+      python: 3.8 #it will istall python 3.8
+  pre_build: # check wether all the software hass been installed successfully
+    commands:
+      - echo *** WE ARE CHECKING IF PYTHON IS INSTALLED... ***
+      - python3 --version
+  build: # actually run the command to build your code
+    command:
+      - echo *** build start at 'date' ***
+      - pwd
+      - Jenny is smart!!!
+  post_build: # finally to check if the code ran
+    commands:
+      - echo ***BUILD completed at 'date' ***
+      - ls -l
+
+artifacts: # files you would like to produce as an output
+  files:
+    - '**/*'

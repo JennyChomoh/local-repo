@@ -66,11 +66,8 @@ Resources:
         - Key: Name
           Value: SampleNetworkCrossStack-SG 
 
-  MyEIP: # we need to allocate and ELastic Ip address using resource
-    Type: AWS::EC2::EIP 
-    Properties:
-      InstanceId: !Ref Myec2instance
-      
+  
+
 Outputs:
   VPCId:
     Description: VPC ID
