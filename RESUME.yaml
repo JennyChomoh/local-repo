@@ -1,0 +1,56 @@
+<div id="header"></div>
+<div class="left"></div>
+<div class="stuff">
+  <br><br>
+  <h1>Resume</h1>
+  <h2>CHOMOH JENNY</h2>
+  <hr />
+  <br>
+  <p class="head">Profile</p>
+  <ul>
+    <li>A determined DevOps engineer adept at unifying and streamlinging software processes. Well versed in combining coding and application management to boost production and software functionality<li/>
+  <p class="head">Interests</p>
+  <ul>
+    <li>Drawing</li>
+    <li>Photography</li>
+    <li>Design</li>
+    <li>Programming</li>
+    <li>Computer Science</li>
+  </ul>
+  <p class="head">Skills</p>
+  <ul>
+    <li>Web Design with HTML & CSS</li>
+  </ul>
+    <li>Design and build web on AWS, which include working with services such as EC2, EBL, RDS, and S3</li>
+    <li>Ensure necessary sytem security by using best cloud security tools</li>
+    <li>Experience in troubleshooting the system and bringing solutions to problems across platform and application domain<li/>
+    <li>Strong collaboration and communication skills with team members to design and impliment any software services</li>
+    <li>Writing Infrastructure-as-Code, and also using DevOps tools in cloud environment, such as Ansible and Github</li>
+  </ul>  
+  <p class="head">Education</p>
+  <ul>
+      <li>Masters in Artl</li>
+    </a>
+      <li>University of Bamenda</li>
+    </a>
+    <li>CloudSpace Academy</li>
+    <li>University of Douala</li>
+    <li>Bachelor Degree</li>
+  </ul>
+  <p class="head">Experience (CloudSpace Consulting LLC)</p>
+  <ul>
+    <li>Build, design , deploy and maintain Infrastructure on AWS Cloudformation Template</li>
+    <li>Impliment IAM best practice and role-based-access control to reduce the risk of account takeover by 85%</li>
+    <li>Provide technical direction and oversight to cloud implimentation teams<li/>
+    <li>Work with a team to build and deploy cloud data solutions<li/>
+  </ul>
+  <p class="head">Extracurriculars</p>
+  <ul>
+    <li>High School Teacher</li>
+    <li>Gardening</li>
+    <li>Singing</li>
+  </ul>
+</div>
+<div class="right"></div>
+<div id="footer">
+  <h2 id="name">JENNY</h2></div>
