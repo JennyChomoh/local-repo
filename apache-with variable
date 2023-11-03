@@ -1,7 +1,7 @@
 - name: setting up apache webserver on amazon client
-  hosts: Amazon-client
+  hosts: Amazon-linux
   vars_files:
-    - variabble.yml
+    - variable.yml
   tasks:
     - name: update all packages   # the equivalent of yum update -y
       ansible.builtin.yum:
