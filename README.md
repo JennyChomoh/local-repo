@@ -1,2 +1,33 @@
-# local-repo
-This repository will be used to store local codes!!!!!
+- name: setting up apache webserver on amazon client
+  hosts: Amazon-client
+  vars_files:
+    - variabble.yml
+  tasks:
+    - name: update all packages   # the equivalent of yum update -y
+      ansible.builtin.yum:
+        name: '*' #every single packages
+        state: latest
+    - name: Install Apache     # equivalent of yum install -y httpd
+      ansible.builtin.yum:
+        name: '{{ package }}'
+        state: present
+    - name: Start service httpd, if not started    # systemctl start httpd
+      ansible.builtin.service:
+        name: '{{ package }}'
+        state: stopped    
+    - name: Start service httpd on boot    # systemctl enable httpd
+      ansible.builtin.service:
+        name: '{{ package }}'
+        enabled: true
+    - name: Copy index.html file from the controller to the target hosts
+      ansible.builtin.copy:
+        src: /home/ubuntu/index.html       # controller
+        dest: /var/www/html  # the target servers
+      notify:
+        - restart apache
+
+  handlers: 
+    - name: restart apache   # globally unique
+      ansible.builtin.service:
+        name: '{{ package }}'
+        state: restarted
